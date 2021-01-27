@@ -9,13 +9,6 @@
     ]
   },
   "Packages": {
-    "BH": {
-      "Package": "BH",
-      "Version": "1.72.0-3",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "8f9ce74c6417d61f0782cbae5fd2b7b0"
-    },
     "MASS": {
       "Package": "MASS",
       "Version": "7.3-51.6",
@@ -51,27 +44,6 @@
       "Repository": "CRAN",
       "Hash": "125dc7a0ed375eb68c0ce533b48d291f"
     },
-    "RcppEigen": {
-      "Package": "RcppEigen",
-      "Version": "0.3.3.7.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "c6faf038ba4346b1de19ad7c99b8f94a"
-    },
-    "RcppParallel": {
-      "Package": "RcppParallel",
-      "Version": "5.0.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "6ed197eccb4693efef91d7d1433c800b"
-    },
-    "StanHeaders": {
-      "Package": "StanHeaders",
-      "Version": "2.21.0-5",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "61b35986173e46a61d26252d1429a6bd"
-    },
     "assertthat": {
       "Package": "assertthat",
       "Version": "0.2.1",
@@ -92,13 +64,6 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "f73f76ba9c2c23cbe3a7657f7411ddc4"
-    },
-    "checkmate": {
-      "Package": "checkmate",
-      "Version": "2.0.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "a667800d5f0350371bedeb8b8b950289"
     },
     "cli": {
       "Package": "cli",
@@ -198,13 +163,6 @@
       "Repository": "CRAN",
       "Hash": "ac5c6baf7822ce8732b343f14c072c4d"
     },
-    "inline": {
-      "Package": "inline",
-      "Version": "0.3.15",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "24fe9c7832cd19e60c04ffb46f2cbb64"
-    },
     "isoband": {
       "Package": "isoband",
       "Version": "0.2.2",
@@ -218,11 +176,11 @@
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
-      "RemoteRepo": "jaspBase",
       "RemoteUsername": "jasp-stats",
-      "RemoteRef": "HEAD",
-      "RemoteSha": "a57aa1a19c8888a599651cc927b933a5a5734c2a",
-      "Hash": "41582113302db3bfa202ea5dd491ce22"
+      "RemoteRepo": "jaspBase",
+      "RemoteRef": "master",
+      "RemoteSha": "7319de5e8d7b1bdc79386e406e932b1292d64ef7",
+      "Hash": "69b7409c6b758a9449dfe1ebe55b3eac"
     },
     "jaspGraphs": {
       "Package": "jaspGraphs",
@@ -264,13 +222,6 @@
       "Repository": "CRAN",
       "Hash": "361811f31f71f8a617a9a68bf63f1f42"
     },
-    "loo": {
-      "Package": "loo",
-      "Version": "2.2.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "5384cbaf43ee10191a52478f5e2bad48"
-    },
     "magrittr": {
       "Package": "magrittr",
       "Version": "1.5",
@@ -278,19 +229,19 @@
       "Repository": "CRAN",
       "Hash": "1bb58822a20301cee84a41678e25d9b7"
     },
-    "matrixStats": {
-      "Package": "matrixStats",
-      "Version": "0.56.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "d16f18aeb023d7a80c090d9458fc75a6"
-    },
     "mgcv": {
       "Package": "mgcv",
       "Version": "1.8-31",
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "4bb7e0c4f3557583e1e8d3c9ffb8ba5c"
+    },
+    "modules": {
+      "Package": "modules",
+      "Version": "0.8.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "1369eeb0fd28eebe2019a72537208551"
     },
     "munsell": {
       "Package": "munsell",
@@ -382,13 +333,6 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "f6a407ae5dd21f6f80a6708bbb6eb3ae"
-    },
-    "rstan": {
-      "Package": "rstan",
-      "Version": "2.19.3",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "73129bed7783ff433c190b5fce836959"
     },
     "rstudioapi": {
       "Package": "rstudioapi",
