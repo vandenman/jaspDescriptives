@@ -31,6 +31,8 @@ Descriptives <- function(jaspResults, dataset, options) {
     }
   }
 
+  .tempAddDataToDataset(jaspResults, options, dataset)
+
   if (makeSplit && length(variables) > 0) {
     splitFactor      <- dataset[[.v(splitName)]]
     splitLevels      <- levels(splitFactor)
@@ -1759,4 +1761,18 @@ Descriptives <- function(jaspResults, dataset, options) {
   tb$addFootnote(footnote)
 
   return(tb)
+}
+
+.tempAddDataToDataset <- function(jaspResults, options, dataset) {
+  if(nrow(dataset) < 1L || !options[["addValues"]] || options[["valueColumn"]] == "")
+    return()
+
+  if(is.null(jaspResults[["valueColumn"]])) {
+    predictions <- rnorm(nrow(dataset))
+    valueColumn <- rep(NA, max(as.numeric(rownames(dataset))))
+    valueColumn[as.numeric(rownames(dataset))] <- predictions
+    jaspResults[["valueColumn"]] <- createJaspColumn(columnName = options[["valueColumn"]])
+    jaspResults[["valueColumn"]]$dependOn(options = c("addValues", "valueColumn"))
+    jaspResults[["valueColumn"]]$setScale(valueColumn)
+  }
 }

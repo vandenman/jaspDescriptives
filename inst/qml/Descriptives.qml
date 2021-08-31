@@ -28,8 +28,24 @@ Form
 	VariablesForm
 	{
 		AvailableVariablesList	{ name: "allVariablesList"								}
-		AssignedVariablesList	{ name: "variables";		title: qsTr("Variables")	}
+		AssignedVariablesList	{ name: "variables";		title: qsTr("Variables"); id: variables	}
 		AssignedVariablesList	{ name: "splitby";			title: qsTr("Split");		singleVariable: true; suggestedColumns: ["ordinal", "nominal"];	id: splitBy }
+	}
+
+	CheckBox
+	{
+		id:			addValues
+		name:		"addValues"
+		text:		qsTr("Add predicted values to data")
+		enabled:	variables.count > 1
+
+		ComputedColumnField {
+			id:				valueColumn
+			name:			"valueColumn"
+			text:			qsTr("Column name: ")
+			fieldWidth:		120
+			visible:		addValues.checked
+		}
 	}
 
 	CheckBox
