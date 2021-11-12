@@ -170,30 +170,48 @@ Form
 				enabled: plotVariables.checked || plotCorrelationMatrix.checked
 
 				indent:		true
-				CheckBox {			name: "distPlotDensity";	label: qsTr("Display density")						}
+
 				CheckBox {			name: "distPlotRug";		label: qsTr("Display rug marks")					}
-				DropDown {
-					name: "binWidthType"
-					label: qsTr("Bin width type")
-					indexDefaultValue: 0
-					values:
-						[
-						{label: qsTr("Sturges"),				value: "sturges"},
-						{label: qsTr("Scott"),					value: "scott"},
-						{label: qsTr("Doane"),					value: "doane"},
-						{label: qsTr("Freedman-Diaconis"),		value: "fd"	},
-						{label: qsTr("Manual"),					value: "manual"	}
-					]
-					id: binWidthType
-				}
-				DoubleField
+
+				RadioButtonGroup
 				{
-					name:			"numberOfBins"
-					label:			qsTr("Number of bins")
-					defaultValue:	30
-					min:			3;
-					max:			10000;
-					enabled:		binWidthType.currentValue === "manual"
+					id:			distributionElement
+					name:		"distributionElement"
+					title:		qsTr("Distribution type")
+					RadioButton { value: "histogram";	label: qsTr("Histogram"); checked: true	}
+					RadioButton { value: "density";		label: qsTr("Density")					}
+					RadioButton { value: "both";		label: qsTr("Both")						}
+
+				}
+
+				Group
+				{
+					indent: true
+					enabled: distributionElement.value === "histogram" || distributionElement.value === "both"
+
+					DropDown {
+						name: "binWidthType"
+						label: qsTr("Bin width type")
+						indexDefaultValue: 0
+						values:
+							[
+							{label: qsTr("Sturges"),				value: "sturges"},
+							{label: qsTr("Scott"),					value: "scott"},
+							{label: qsTr("Doane"),					value: "doane"},
+							{label: qsTr("Freedman-Diaconis"),		value: "fd"	},
+							{label: qsTr("Manual"),					value: "manual"	}
+						]
+						id: binWidthType
+					}
+					DoubleField
+					{
+						name:			"numberOfBins"
+						label:			qsTr("Number of bins")
+						defaultValue:	30
+						min:			3;
+						max:			10000;
+						enabled:		binWidthType.currentValue === "manual"
+					}
 				}
 			}
 
