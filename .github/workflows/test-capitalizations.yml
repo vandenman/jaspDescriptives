@@ -1,6 +1,6 @@
 on: 
   push:
-    paths: ['**.R', 'NAMESPACE', '**.md', '**.html', '**.qml', 'inst/Description.qml']
+    paths: ['**.R', 'NAMESPACE', '**.md', '**.html', '**.qml', 'inst/Description.qml', '**.yml']
   pull_request:
     paths: ['**.R', 'NAMESPACE', '**.md', '**.html', '**.qml', 'inst/Description.qml']
 
@@ -8,7 +8,8 @@ name: verify-capitalizations
 
 jobs:
   verify-capitalizations:
-  runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
+  
     env:
       GITHUB_TOKEN: ${{ secrets.REPO_KEY }}
 
