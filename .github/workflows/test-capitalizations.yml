@@ -4,7 +4,7 @@ on:
   pull_request:
     paths: ['**.R', 'NAMESPACE', '**.md', '**.html', '**.qml', 'inst/Description.qml']
 
-name: verify-capitalizations
+name: test-capitalizations
 
 jobs:
   verify-capitalizations:
