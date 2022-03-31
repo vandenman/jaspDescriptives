@@ -1,0 +1,11 @@
+on:
+  push:
+    paths: ['**.R', '**.yml']
+  pull_request:
+    paths: ['**.R']
+
+name: lint R files
+
+jobs:
+  lintr:
+    uses: vandenman/jasp-actions/.github/workflows/lintr.yml@lintr-reuseable-workflow
