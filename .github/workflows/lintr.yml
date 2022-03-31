@@ -1,6 +1,4 @@
 on:
-  push:
-    paths: ['**.R', '**.yml']
   pull_request:
     paths: ['**.R']
 

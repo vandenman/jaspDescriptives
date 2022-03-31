@@ -1871,5 +1871,3 @@ Descriptives <- function(jaspResults, dataset, options) {
 
   return(data)
 }
-
-
