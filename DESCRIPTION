@@ -14,6 +14,10 @@ Imports:
   ggrepel,
   jaspBase,
   jaspGraphs
+Suggests:
+  testthat,
+  jaspTools
 Remotes:
   jasp-stats/jaspBase,
-  jasp-stats/jaspGraphs
+  jasp-stats/jaspGraphs,
+  jasp-stats/jaspTools
