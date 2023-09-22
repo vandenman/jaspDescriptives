@@ -52,7 +52,7 @@ DescriptivesInternal <- function(jaspResults, dataset, options) {
     splitDat.factors <- split(dataset.factors[variables], splitFactor)
   }
 
-  .descriptivesDescriptivesTable(dataset, options, jaspResults, numberMissingSplitBy = numberMissingSplitBy)
+  .descriptivesDescriptivesTable(dataset, dataset.factors, options, jaspResults, numberMissingSplitBy = numberMissingSplitBy)
 
   # Frequency table
   if (options$frequencyTables) {
@@ -359,7 +359,7 @@ DescriptivesInternal <- function(jaspResults, dataset, options) {
   return()
 }
 
-.descriptivesDescriptivesTable <- function(dataset, options, jaspResults, numberMissingSplitBy = 0) {
+.descriptivesDescriptivesTable <- function(dataset, dataset.factors, options, jaspResults, numberMissingSplitBy = 0) {
   if (!is.null(jaspResults[["stats"]])) {
     return()
   } # The options for this table didn't change so we don't need to rebuild it
@@ -418,9 +418,15 @@ DescriptivesInternal <- function(jaspResults, dataset, options) {
     varianceCiLbTitle <- gettextf("%s%% CI Variance Lower", formattedVarianceCiPercent)
   }
 
+  modeType <- "number"#if (identical(lapply(dataset, class), lapply(dataset.factors, class))) {
+  #   "number"
+  # } else {
+  #   "string"
+  # }
+
   if (options$valid)                          stats$addColumnInfo(name="Valid",                       title=gettext("Valid"),                   type="integer")
   if (options$missing)                        stats$addColumnInfo(name="Missing",                     title=gettext("Missing"),                 type="integer")
-  if (options$mode)                           stats$addColumnInfo(name="Mode",                        title=gettext("Mode"),                    type="number")
+  if (options$mode)                           stats$addColumnInfo(name="Mode",                        title=gettext("Mode"),                    type=modeType)
   if (options$median)                         stats$addColumnInfo(name="Median",                      title=gettext("Median"),                  type="number")
   if (options$mean)                           stats$addColumnInfo(name="Mean",                        title=gettext("Mean"), 				            type="number")
   if (options$seMean)                         stats$addColumnInfo(name="Std. Error of Mean",          title=gettext("Std. Error of Mean"),      type="number")
@@ -487,7 +493,8 @@ DescriptivesInternal <- function(jaspResults, dataset, options) {
     for (variable in variables) {
       for (l in seq_len(nLevels)) {
         column <- dataset[[variable]][split == splitLevels[l]]
-        subReturn <- .descriptivesDescriptivesTable_subFunction(column, list(Variable = variable, Level = splitLevels[l]), options, shouldAddNominalTextFootnote, shouldAddModeMoreThanOnceFootnote, jaspResults)
+        columnOriginalType <- dataset.factors[[variable]][split == splitLevels[l]]
+        subReturn <- .descriptivesDescriptivesTable_subFunction(column, columnOriginalType, list(Variable = variable, Level = splitLevels[l]), options, shouldAddNominalTextFootnote, shouldAddModeMoreThanOnceFootnote, jaspResults)
 
         shouldAddNominalTextFootnote <- subReturn$shouldAddNominalTextFootnote
         shouldAddModeMoreThanOnceFootnote <- subReturn$shouldAddModeMoreThanOnceFootnote
@@ -514,7 +521,8 @@ DescriptivesInternal <- function(jaspResults, dataset, options) {
   } else { # we dont want to split
     for (variable in variables) {
       column <- dataset[[variable]]
-      subReturn <- .descriptivesDescriptivesTable_subFunction(column, list(Variable = variable), options, shouldAddNominalTextFootnote, shouldAddModeMoreThanOnceFootnote, jaspResults)
+      columnOriginalType <- dataset.factors[[variable]]
+      subReturn <- .descriptivesDescriptivesTable_subFunction(column, columnOriginalType, list(Variable = variable), options, shouldAddNominalTextFootnote, shouldAddModeMoreThanOnceFootnote, jaspResults)
 
       shouldAddNominalTextFootnote      <- subReturn$shouldAddNominalTextFootnote
 
@@ -547,7 +555,7 @@ DescriptivesInternal <- function(jaspResults, dataset, options) {
   return(stats)
 }
 
-.descriptivesDescriptivesTable_subFunction <- function(column, resultsCol, options, shouldAddNominalTextFootnote, shouldAddModeMoreThanOnceFootnote, jaspResults) {
+.descriptivesDescriptivesTable_subFunction <- function(column, columnOriginalType, resultsCol, options, shouldAddNominalTextFootnote, shouldAddModeMoreThanOnceFootnote, jaspResults) {
   equalGroupsNo          <- options$quantilesForEqualGroupsNumber
   percentilesPercentiles <- unique(options$percentileValues)
 
@@ -619,14 +627,21 @@ DescriptivesInternal <- function(jaspResults, dataset, options) {
 
   if (options$mode) {
 
-    if (is.numeric(na.omitted)) { # scale data
+    if (is.numeric(columnOriginalType)) { # scale data
       temp <- .desriptivesComputeModeContinuous(na.omitted)
       mode <- temp[["xValues"]][which.max(temp[["yValues"]])]
 
       shouldAddModeMoreThanOnceFootnote <- temp[["numModes"]] > 1L
     } else { # ordinal, nominal, or nominal text data
-      tb <- table(na.omitted)
-      mode <- as.numeric(names(tb[tb == max(tb)]))
+      tb <- table(columnOriginalType)
+      # mode <- as.numeric(names(tb[tb == max(tb)]))
+      mode <- names(tb[tb == max(tb)])
+
+      # try to provide a numeric result and use an index otherwise (we really need mixed columns)
+      if (anyNA(suppressWarnings(as.numeric(mode))))
+        mode <- which(tb == max(tb))
+      else
+        mode <- as.numeric(mode)
 
       shouldAddModeMoreThanOnceFootnote <- length(mode) > 1L
     }
