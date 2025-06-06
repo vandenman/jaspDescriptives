@@ -17,6 +17,36 @@
 
 DescriptivesInternal <- function(jaspResults, dataset, options) {
 
+  t <- seq(-2*pi, 2*pi, length.out = 41)
+  x <- sin(t)
+  y <- cos(t)
+  ggplotje <- ggplot2::ggplot(data.frame(x = x, y = y), ggplot2::aes(x = x, y = y)) +
+    ggplot2::geom_point()
+
+  plotlyplotje <- plotly::ggplotly(ggplotje)
+
+  html0 <- htmlwidgets:::toHTML(plotlyplotje, standalone = FALSE)
+  html0 <- htmltools::as.tags(plotlyplotje, standalone = FALSE)
+  as.character(html0)
+  # str(html0)
+  # as.character(html0)
+
+  htmltools::as.tags(plotlyplotje, standalone = FALSE)
+
+  # htmlwidgets:::saveWidget(plotlyplotje, "~/temp_jasp/plotlyTest.html", selfcontained = FALSE)
+
+  jaspResults[["plotlyTest"]] <- createJaspHtml(
+    title = "Plotly Test",
+    text = paste0(
+      '<div id="htmlwidget_container">',
+      as.character(html0),
+      '</div>'#,
+      # sep = ""
+    ),
+    elementType = "__plotly__"
+  )
+
+
   variables     <- unlist(options[["variables"]])
   variableTypes <- options[["variables.types"]]
 
