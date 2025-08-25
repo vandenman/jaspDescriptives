@@ -24,10 +24,15 @@ DescriptivesInternal <- function(jaspResults, dataset, options) {
     ggplot2::geom_point()
 
   plotlyplotje <- plotly::ggplotly(ggplotje)
+  # plotly::plotly_json(plotlyplotje, jsonedit = FALSE)
+  # plotlybuild <- plotly::plotly_build(plotlyplotje)
+  # plotlybuild$x
 
   html0 <- htmlwidgets:::toHTML(plotlyplotje, standalone = FALSE)
   html0 <- htmltools::as.tags(plotlyplotje, standalone = FALSE)
   as.character(html0)
+
+
   # str(html0)
   # as.character(html0)
 
