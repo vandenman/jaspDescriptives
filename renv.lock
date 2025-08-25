@@ -1472,11 +1472,7 @@
     },
     "curl": {
       "Package": "curl",
-<<<<<<< HEAD
-      "Version": "6.3.0",
-=======
       "Version": "6.2.2",
->>>>>>> 0e1e07e (update lockfile)
       "Source": "Repository",
       "Type": "Package",
       "Title": "A Modern and Flexible Web Client for R",
@@ -1855,11 +1851,6 @@
       "Package": "evaluate",
       "Version": "1.0.3",
       "Source": "Repository",
-<<<<<<< HEAD
-      "Requirements": [
-        "R"
-      ]
-=======
       "Title": "ANSI Control Sequence Aware String Functions",
       "Description": "Counterparts to R string manipulation functions that account for the effects of ANSI text formatting control sequences.",
       "Authors@R": "c( person(\"Brodie\", \"Gaslam\", email=\"brodie.gaslam@yahoo.com\", role=c(\"aut\", \"cre\")), person(\"Elliott\", \"Sales De Andrade\", role=\"ctb\"), person(family=\"R Core Team\", email=\"R-core@r-project.org\", role=\"cph\", comment=\"UTF8 byte length calcs from src/util.c\" ))",
@@ -1886,7 +1877,6 @@
       "Author": "Brodie Gaslam [aut, cre], Elliott Sales De Andrade [ctb], R Core Team [cph] (UTF8 byte length calcs from src/util.c)",
       "Maintainer": "Brodie Gaslam <brodie.gaslam@yahoo.com>",
       "Repository": "CRAN"
->>>>>>> 0e1e07e (update lockfile)
     },
     "farver": {
       "Package": "farver",
@@ -3235,10 +3225,7 @@
       "RemoteHost": "api.github.com",
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspGraphs",
-<<<<<<< HEAD
-=======
       "RemoteRef": "master",
->>>>>>> 0e1e07e (update lockfile)
       "RemoteSha": "c884a4239590cdb08c1f18cbeaad9107395425aa"
     },
     "jaspTTests": {
@@ -3268,9 +3255,6 @@
       "RemoteHost": "api.github.com",
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspTTests",
-<<<<<<< HEAD
-      "RemoteSha": "91356e2d9445269064239ef8e517d5ad5649ed67"
-=======
       "RemoteRef": "master",
       "RemoteSha": "c0c63a193c2aa95199aa6c28da0ef2129f3ecede",
       "Remotes": "jasp-stats/jaspBase, jasp-stats/jaspGraphs"
@@ -3310,7 +3294,6 @@
       "RemoteRepo": "jaspTools",
       "RemoteRef": "master",
       "RemoteSha": "8a5cf998d43d08f0925ae7bb6083242e0bc6e0ce"
->>>>>>> 0e1e07e (update lockfile)
     },
     "jpeg": {
       "Package": "jpeg",
@@ -4333,11 +4316,7 @@
     },
     "officer": {
       "Package": "officer",
-<<<<<<< HEAD
-      "Version": "0.6.10",
-=======
       "Version": "0.6.8",
->>>>>>> 0e1e07e (update lockfile)
       "Source": "Repository",
       "Type": "Package",
       "Title": "Manipulation of Microsoft Word and PowerPoint Documents",
@@ -6161,11 +6140,6 @@
       "Package": "tibble",
       "Version": "3.3.0",
       "Source": "Repository",
-<<<<<<< HEAD
-      "Requirements": [
-        "cli",
-        "lifecycle",
-=======
       "Title": "Simple Data Frames",
       "Authors@R": "c(person(given = \"Kirill\", family = \"M\\u00fcller\", role = c(\"aut\", \"cre\"), email = \"kirill@cynkra.com\", comment = c(ORCID = \"0000-0002-1416-3412\")), person(given = \"Hadley\", family = \"Wickham\", role = \"aut\", email = \"hadley@rstudio.com\"), person(given = \"Romain\", family = \"Francois\", role = \"ctb\", email = \"romain@r-enthusiasts.com\"), person(given = \"Jennifer\", family = \"Bryan\", role = \"ctb\", email = \"jenny@rstudio.com\"), person(given = \"RStudio\", role = c(\"cph\", \"fnd\")))",
       "Description": "Provides a 'tbl_df' class (the 'tibble') with stricter checking and better formatting than the traditional data frame.",
@@ -6178,7 +6152,6 @@
       "Imports": [
         "fansi (>= 0.4.0)",
         "lifecycle (>= 1.0.0)",
->>>>>>> 0e1e07e (update lockfile)
         "magrittr",
         "methods",
         "pillar (>= 1.8.1)",
