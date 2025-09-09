@@ -20,6 +20,8 @@ DescriptivesInternal <- function(jaspResults, dataset, options) {
   variables     <- unlist(options[["variables"]])
   variableTypes <- options[["variables.types"]]
 
+
+
   scaleVariables    <- variables[variableTypes == "scale"]
   nonScaleVariables <- variables[variableTypes != "scale"]
 
