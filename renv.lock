@@ -789,26 +789,8 @@
     },
     "ggplot2": {
       "Package": "ggplot2",
-      "Version": "3.5.2",
-      "Source": "Repository",
-      "Requirements": [
-        "cli",
-        "glue",
-        "grDevices",
-        "grid",
-        "gtable",
-        "isoband",
-        "lifecycle",
-        "MASS",
-        "mgcv",
-        "R",
-        "rlang",
-        "scales",
-        "stats",
-        "tibble",
-        "vctrs",
-        "withr"
-      ]
+      "Version": "4.0.0",
+      "Source": "Repository"
     },
     "ggpp": {
       "Package": "ggpp",
